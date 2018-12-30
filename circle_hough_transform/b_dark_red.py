@@ -6,6 +6,7 @@ from matplotlib import pyplot as plt
 import numpy as np
 import imutils
 import glob
+import time
 import cv2
 import os
 
@@ -17,15 +18,17 @@ import os
 # clear the screen
 os.system("cls")
 # load image into array
-img = cv2.imread("1-original.jpg", 3)
-# convert image to hsv colouring
-hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
-# minimum red color range in hsv colouring
-lower_red = np.array([  0, 150,  60])
-# maximum red color range in hsv colouring
-upper_red = np.array([  1, 240, 255])
+img = cv2.imread("1-dark.jpg", 3)
+# record the start time
+start = time.time()
+# convert image to ycrcb colouring
+ycrcb = cv2.cvtColor(img, cv2.COLOR_BGR2YCrCb)
+# minimum red color range in ycrcb colouring
+lower_red = np.array([ 10, 180,  90])
+# maximum red color range in ycrcb colouring
+upper_red = np.array([145, 230, 115])
 # mask all colour except red
-mask = cv2.inRange(hsv, lower_red, upper_red)
+mask = cv2.inRange(ycrcb, lower_red, upper_red)
 # erode outer pixels of an object in mask 
 mask = cv2.erode(mask, None, iterations = 2)
 # dilate outer pixels of an object in mask
@@ -59,14 +62,18 @@ if (len(cnts) > 0):
         # draw the centroid
         cv2.circle(circle, center, 5, (255, 255, 255), -1)
 
+# calculate the stop time
+stop = time.time() - start
+# time take
+print ("Time taken to draw a circle on red ball: %s [s]." % stop)
 # center pinpoint result
 print ("The circle's center is located at point x-axis: %s, y-axis: %s.\n" % (center[0], center[1]))
-# converted hsv image
-print ("HSV converted image result is saved as 2-bgr2hsv.jpg")
-cv2.imwrite("2-bgr2hsv.jpg", hsv)
+# converted ycrcb image
+print (">> ycrcb converted image result is saved as 2-bgr2ycrcb.jpg")
+cv2.imwrite("2-bgr2ycrcb.jpg", ycrcb)
 # masked red image
-print ("Red masked image result is saved as 3-masked.jpg")
+print (">> Red masked image result is saved as 3-masked.jpg")
 cv2.imwrite("2-masked.jpg", res)
 # draw circle image
-print ("Circle image result is saved as 4-circle.jpg")
+print (">> Circle image result is saved as 4-circle.jpg")
 cv2.imwrite("4-circle.jpg", circle)

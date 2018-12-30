@@ -45,7 +45,7 @@ if __name__ == '__main__' :
     global img
 
     # load the image and setup the mouse callback function
-    files = glob.glob("original_image/*.jpg")
+    files = glob.glob("*.jpg")
     files.sort()
     print(files)
     img = cv2.imread(files[0])
