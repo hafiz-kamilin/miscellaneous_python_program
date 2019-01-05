@@ -1,6 +1,11 @@
 #!/usr/bin/env python2
 # -*- coding: utf-8 -*-
 
+# source 1: https://www.learnopencv.com/color-spaces-in-opencv-cpp-python/
+# source 2: https://github.com/spmallick/learnopencv/tree/master/ColorSpaces/
+# source 3: https://docs.opencv.org/3.4.1/df/d9d/tutorial_py_colorspaces.html/
+# source 4: https://www.pyimagesearch.com/2015/09/14/ball-tracking-with-opencv/
+
 # setting up modules used in the program
 import numpy as np
 import imutils
