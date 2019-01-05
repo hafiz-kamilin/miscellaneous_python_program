@@ -75,7 +75,7 @@ while True:
     print ("Time taken to process 1 frame is %.6f [s]" % end)
 
     # Display the resulting frame
-    cv2.imshow("Real time red circle tracking", flip)
+    cv2.imshow("Real time red circle tracking, to quit press [q]", flip)
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
 
