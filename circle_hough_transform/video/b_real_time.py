@@ -21,7 +21,7 @@ cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
 # minimum red color range in ycrcb colouring
 lower_red = np.array([ 10, 160, 110])
 # maximum red color range in ycrcb colouring
-upper_red = np.array([145, 180, 120])
+upper_red = np.array([255, 180, 120])
 
 while True:
 
