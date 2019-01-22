@@ -38,7 +38,7 @@ class Server(threading.Thread):
                     break 
 
                 user_input = int(self.connection.recv(1024).decode())
-                print("a_threading: %d" % user_input)
+                print("b_threading: %d" % user_input)
 
         except:
 
